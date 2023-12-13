@@ -24,16 +24,23 @@ public class EmailController {
 
     @PostMapping("/send-email")
     public String sendEmail(
-    		Model model,
+            Model model,
             @RequestParam String to,
             @RequestParam String subject,
             @RequestParam String body) {
 
-        emailService.sendEmail(to, subject, body);
-        model.addAttribute("to", to);
-        model.addAttribute("subject", subject);
-        model.addAttribute("body", body);
+        try {
+            emailService.sendEmail(to, subject, body);
 
-        return "Done"; // Assuming "Done.jsp" is in the "src/main/resources/templates" directory
+            model.addAttribute("to", to);
+            model.addAttribute("subject", subject);
+            model.addAttribute("body", body);
+
+            return "Done"; // Assuming "Done.jsp" is in the "src/main/resources/templates" directory
+        } catch (Exception e) {
+            // Handle the exception, you can log it or display an error message
+            model.addAttribute("error", "Error sending email: " + e.getMessage());
+            return "Error";
+        }
     }
 }
