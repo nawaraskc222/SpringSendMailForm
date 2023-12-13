@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Done Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .info-box {
+            border: 1px solid #007bff;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        p {
+            color: #6c757d;
+            margin: 10px 0;
+        }
+
+        span {
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-box">
+        <h1>Email Sent Successfully!</h1>
+        <p><strong>To:</strong> <span th:text="${to}"></span></p>
+        <p><strong>Subject:</strong> <span th:text="${subject}"></span></p>
+        <p><strong>Body:</strong> <span th:text="${body}"></span></p>
+    </div>
+</body>
+</html>
